@@ -5,7 +5,9 @@ interface FooterProps {}
 const Footer: React.FC<FooterProps> = () => {
   return (
     <footer>
-      <p>&copy: ®@it0m {new Date().getFullYear()}</p>
+      <div>
+        <p>&copy: ®@it0m {new Date().getFullYear()}</p>
+      </div>
     </footer>
   )
 }

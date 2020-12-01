@@ -31,7 +31,7 @@ const TaskPost: React.FC<TaskPostProps> = ({ frontmatter, content }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const files = fs.readdirSync('src/_tasks')
+  const files = fs.readdirSync('src/_posts')
   const paths = files.map(fname => ({
     params: {
       slug: fname.replace('.md', '')
@@ -47,7 +47,7 @@ export const getStaticProps: GetStaticProps<TaskPostProps> = async ({
   params
 }) => {
   const slug = params?.slug
-  const md = fs.readFileSync(path.join('src/_tasks', `${slug}.md`)).toString()
+  const md = fs.readFileSync(path.join('src/_posts', `${slug}.md`)).toString()
   const { data, content } = matter(md)
   const date = data.date.toLocaleDateString('en-ES', {
     year: 'numeric',
