@@ -1,14 +1,13 @@
 import React from 'react'
+import FooterElement from 'src/styles/FooterElement'
 
 interface FooterProps {}
 
 const Footer: React.FC<FooterProps> = () => {
   return (
-    <footer>
-      <div>
-        <p>&copy: ®@it0m {new Date().getFullYear()}</p>
-      </div>
-    </footer>
+    <FooterElement>
+      <p>&copy; ®aitOm {new Date().getFullYear()}</p>
+    </FooterElement>
   )
 }
 

@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import React from 'react'
+import LayoutElement from 'src/styles/LayoutElement'
 import Footer from './Footer'
 import Header from './Header'
 
@@ -13,11 +14,11 @@ const Layout: React.FC<LayoutProps> = ({ pageTitle, children }) => {
       <Head>
         <title>{pageTitle}</title>
       </Head>
-      <div>
+      <LayoutElement>
         <Header />
         <main>{children}</main>
         <Footer />
-      </div>
+      </LayoutElement>
     </>
   )
 }

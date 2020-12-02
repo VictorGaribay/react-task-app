@@ -2,8 +2,9 @@ import fs from 'fs'
 import matter from 'gray-matter'
 import { GetStaticProps, NextPage } from 'next'
 import React from 'react'
+import Hero from 'src/components/Hero'
 import Layout from 'src/components/Layout'
-import PostListing from 'src/components/PostListing'
+import MainSection from 'src/components/MainSection'
 import PostPreview from 'src/types/PostPreview'
 
 interface TaskProps {
@@ -13,12 +14,8 @@ interface TaskProps {
 const Task: NextPage<TaskProps> = ({ posts }) => {
   return (
     <Layout pageTitle="Home">
-      <section>
-        <h1>Next.js Task</h1>
-        <p>Create task with Next.js and typeScript</p>
-        <button>Suscribe</button>
-      </section>
-      <PostListing posts={posts} />
+      <Hero />
+      <MainSection posts={posts} />
     </Layout>
   )
 }
