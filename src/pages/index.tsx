@@ -13,7 +13,7 @@ interface TaskProps {
 
 const Task: NextPage<TaskProps> = ({ posts }) => {
   return (
-    <Layout pageTitle="Home">
+    <Layout pageTitle="Home" description="Principal">
       <Hero />
       <MainSection posts={posts} />
     </Layout>

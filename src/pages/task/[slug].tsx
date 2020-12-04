@@ -5,9 +5,12 @@ import path from 'path'
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import Layout from 'src/components/Layout'
+import Container from 'src/styles/Containers'
+import { Title } from 'src/styles/TextElement'
 
 interface TaskPostProps {
   content: string
+  excerpt: string
   frontmatter: {
     title: string
     author: string
@@ -15,17 +18,21 @@ interface TaskPostProps {
   }
 }
 
-const TaskPost: React.FC<TaskPostProps> = ({ frontmatter, content }) => {
+const TaskPost: React.FC<TaskPostProps> = ({
+  frontmatter,
+  content,
+  excerpt
+}) => {
   return (
-    <Layout pageTitle={frontmatter.title}>
+    <Layout pageTitle={frontmatter.title} description={excerpt}>
       {/* {JSON.stringify(frontmatter, null, 2)} */}
-      <div>
+      <Container>
         <h3>
           By {frontmatter.author} - {frontmatter.date}
         </h3>
-        <h1>{frontmatter.title}</h1>
+        <Title>{frontmatter.title}</Title>
         <ReactMarkdown source={content} />
-      </div>
+      </Container>
     </Layout>
   )
 }
@@ -48,7 +55,7 @@ export const getStaticProps: GetStaticProps<TaskPostProps> = async ({
 }) => {
   const slug = params?.slug
   const md = fs.readFileSync(path.join('src/_posts', `${slug}.md`)).toString()
-  const { data, content } = matter(md)
+  const { data, content, excerpt } = matter(md)
   const date = data.date.toLocaleDateString('en-ES', {
     year: 'numeric',
     month: 'long',
@@ -61,6 +68,7 @@ export const getStaticProps: GetStaticProps<TaskPostProps> = async ({
         author: data.author,
         date
       },
+      excerpt,
       content
     }
   }

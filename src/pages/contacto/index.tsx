@@ -6,7 +6,7 @@ interface ContacProps {}
 
 const Contac: React.FC<ContacProps> = () => {
   return (
-    <Layout pageTitle="Contacto">
+    <Layout pageTitle="Contacto" description="Contacts">
       <Container>
         <h1>Contacto</h1>
         <p>
